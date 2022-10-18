@@ -9,10 +9,7 @@
     <script defer src="hge-framework-alpha.js"></script>
 </head> 
 <body>
-    <game-win width="1920" height="715" backgroundcolor=" 0xE0FFFE"></game-win>
-    <scene-start>
-        resizetowindow()
-    </scene-start>
+    <game-win width="1920" height="720" backgroundcolor=" 0xE0FFFE"></game-win>
     <game-object name="sfslogo" sprite="images/sfslogo.png" width="64" height="64"></game-object>
     <game-text name="titletxt" text="Make your own animal cell! 🐑" textstyle='const titletxtstyle = new PIXI.TextStyle({
         dropShadowColor: "#85a3ff",
@@ -27,6 +24,10 @@
         fontFamily: "Impact",
         fontSize: 23
     });' x="70" y="70"></game-text>
+    <game-text name="credits" text="Made by: Saihaan Multani (SMASP123)\n               Hayden Kirkham\n               Yahya Elsaye\n               Moemen Ghanem" x="30" y="570"></game-text>
+    <scene-start>
+        credits.angle = -90
+    </scene-start>
     <game-button name="cellmembranebtn" sprite="images/cellmembranebtn.png" width="128" height="51" x="1300" y="37">
         createplayer("cellmembrane", "testimg/cellmembranet.png", 455, 55, 567, 630, 0)
         cellmembrane.alpha = 0.7
@@ -144,17 +145,14 @@
         {
             golfanim()
         }, 300)
+        window.nutrientsflow = function()
+        {
+            createenemy("nutrients", "images/minecraftxp.png", 100, 600, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "osmosisrec", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
+        }
+        createenemy("nutrients", "images/minecraftxp.png", 100, 600, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "osmosisrec", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
     </game-button>
     <game-button name="resetbtn" sprite="images/resetbtn.jpg" width="128" height="51" x="0" y="630">
-        destroyobj(cellmembrane)
-        destroyobj(cytoplasm)
-        destroyobj(nucleleus)
-        destroyobj(nucleus)
-        destroyobj(vacuole1)
-        destroyobj(vacuole2)
-        destroyobj(vacuole3)
-        destroyobj(mitochrondia1)
-        destroyobj(mitochrondia2)
+        changescene("index.html")
     </game-button>
 </body>
 </html>

@@ -229,66 +229,6 @@ class GameButton extends HTMLElement
 
 window.customElements.define('game-button', GameButton)
 
-class SceneStart extends HTMLElement
-{
-    constructor()
-    {
-        super()
-    }
-
-    connectedCallback()
-    {
-        let lscode = interpretehgelang(this.innerHTML, false)
-        compiledresult = compiledresult.concat(lscode)
-        this.style.position = 'absolute'
-        this.style.color = 'transparent'
-    }
-}
-
-window.customElements.define('scene-start', SceneStart)
-
-class SceneGroup extends HTMLElement
-{
-    get hasname()
-    {
-        return this.hasAttribute('name')
-    }
-    constructor()
-    {
-        super()
-    }
-
-    connectedCallback()
-    {
-        if (!this.hasname)
-        {
-            throw console.error("A group should have a name atleast")
-        }
-        this.style.position = 'absolute'
-        this.style.color = 'transparent'
-    }
-}
-
-window.customElements.define('scene-group', SceneGroup)
-
-class SceneUpdate extends HTMLElement
-{
-    constructor()
-    {
-        super()
-    }
-
-    connectedCallback()
-    {
-        let lscode = interpretehgelang(this.innerHTML, true)
-        compiledresult = compiledresult.concat(lscode)
-        this.style.position = 'absolute'
-        this.style.color = 'transparent'
-    }
-}
-
-window.customElements.define('scene-update', SceneUpdate)
-
 class GameText extends HTMLElement{
     get hastext()
     {
@@ -579,6 +519,66 @@ class GameAudio extends HTMLElement
 
 window.customElements.define('game-audio', GameAudio)
 
+class SceneStart extends HTMLElement
+{
+    constructor()
+    {
+        super()
+    }
+
+    connectedCallback()
+    {
+        let lscode = interpretehgelang(this.innerHTML, false)
+        compiledresult = compiledresult.concat(lscode)
+        this.style.position = 'absolute'
+        this.style.color = 'transparent'
+    }
+}
+
+window.customElements.define('scene-start', SceneStart)
+
+class SceneGroup extends HTMLElement
+{
+    get hasname()
+    {
+        return this.hasAttribute('name')
+    }
+    constructor()
+    {
+        super()
+    }
+
+    connectedCallback()
+    {
+        if (!this.hasname)
+        {
+            throw console.error("A group should have a name atleast")
+        }
+        this.style.position = 'absolute'
+        this.style.color = 'transparent'
+    }
+}
+
+window.customElements.define('scene-group', SceneGroup)
+
+class SceneUpdate extends HTMLElement
+{
+    constructor()
+    {
+        super()
+    }
+
+    connectedCallback()
+    {
+        let lscode = interpretehgelang(this.innerHTML, true)
+        compiledresult = compiledresult.concat(lscode)
+        this.style.position = 'absolute'
+        this.style.color = 'transparent'
+    }
+}
+
+window.customElements.define('scene-update', SceneUpdate)
+
 function playaud(audobj)
 {
     audobj.play()
@@ -602,6 +602,11 @@ function changey(obj, val)
 function changetext(txt, val)
 {
     txt.text = val
+}
+
+function changescene(webpage)
+{
+    location.href = webpage
 }
 
 function destroyobj(obj, objticker = null)
