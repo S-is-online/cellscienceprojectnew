@@ -90,7 +90,7 @@
         setTimeout(vacanim, 300)
     </game-button>
     <game-button name="mitochrondiabtn" sprite="images/mitochrondiabtn.png" width="128" height="51" x="1300" y="327">
-        createobj("mitochrondia1", "testimg/mitochrondiat.png", 600, 223, 110, 51)
+        createobj("mitochrondia1", "testimg/mitochrondiat.png", 570, 223, 110, 51)
         mitochrondia1.angle = 45
         createobj("mitochrondia2", "testimg/mitochrondiat.png", 937, 323, 110, 51)
         mitochrondia2.angle = 113
@@ -100,13 +100,13 @@
             if (mitf == 1)
             {
                 changey(mitochrondia2, 331)
-                changex(mitochrondia1, 593)
+                changex(mitochrondia1, 563)
                 mitf = 2
             }
             else if (mitf == 2)
             {
                 changey(mitochrondia2, 323)
-                changex(mitochrondia1, 600)
+                changex(mitochrondia1, 570)
                 mitf = 1
             }
             setTimeout(function()
@@ -119,6 +119,7 @@
             mitanim()
         }, 300)
     </game-button>
+
     <game-button name="golgiappbtn" sprite="images/golgiappbtn.png" width="128" height="51" x="1300" y="385">
         createplayer("golgiapp", "testimg/golgi.png", 670, 590, 70, 70, 0)
         var golf = 1
@@ -150,6 +151,45 @@
             createenemy("nutrients", "images/minecraftxp.png", 100, 600, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "osmosisrec", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
         }
         createenemy("nutrients", "images/minecraftxp.png", 100, 600, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "osmosisrec", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
+    </game-button>
+
+
+    <game-button name="lysosomesbtn" sprite="images/lysosomesbtn.png" width="128" height="51" x="1300" y="443">
+        createobj("lysosomes1", "testimg/lysosomest.png", 477, 300, 53, 53)
+        createobj("lysosomes2", "testimg/lysosomest.png", 937, 151, 53, 53)
+        var mitf = 1
+        var mitanim = function()
+        {
+            if (mitf == 1)
+            {
+                changey(lysosomes1, 303)
+                changex(lysosomes2, 935)
+                mitf = 2
+            }
+            else if (mitf == 2)
+            {
+                changey(lysosomes1, 300)
+                changex(lysosomes2, 937)
+                mitf = 1
+            }
+            setTimeout(function()
+            {
+                mitanim()
+            }, 300)
+        }
+        setTimeout(function()
+        {
+            mitanim()
+        }, 300)
+    </game-button>
+
+    <game-button name="erbtn" sprite="images/erbtn.png" width="128" height="51" x="1300" y="501">
+        createobj("er1", "testimg/ert.jpg", 730, 187 + 110, 100, 37)
+        er1.angle = 90 + 45
+        createobj("er2", "testimg/ert.jpg", 730 + 110, 187, 100, 37)
+        er2.angle = -90 + 45
+        createobj("ribosomes1", "testimg/ribosomest.png", 730 + 17, 187 + 110 + 17, 37, 37)
+        createobj("ribosomes2", "testimg/ribosomest.png", 730 + 110 - 37, 187 - 47, 37, 37)
     </game-button>
     <game-button name="resetbtn" sprite="images/resetbtn.jpg" width="128" height="51" x="0" y="630">
         changescene("index.html")
