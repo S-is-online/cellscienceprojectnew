@@ -37,13 +37,13 @@
         cellrep.angle = 90
     </scene-start>
     <game-button name="cellmembranebtn" sprite="images/cellmembranebtn.png" width="128" height="51" x="1300" y="37">
-        createplayer("cellmembrane", "images/cellmembrane.png", 455 - 100, 55, 567 + 150, 630 + 50, 0)
+        createplayer("cellmembrane", "images/cellmembrane.png", 455 - 100, 23, 567 + 150, 630 + 50, 0)
         cellmembrane.alpha = 0.7
         cellrep.text = "Cell Membrane is like guards on the border\nwho let authorized personel pass."
     </game-button>
     <game-player name="osmosisrec" sprite="testimg/transparent.png" x="100" y="300" width="110" height="110" speed="0"></game-player>
     <game-button name="cytoplasmbtn" sprite="images/cytoplasmbtn.png" width="128" height="51" x="1300" y="95">
-        createobj("cytoplasm", "images/cytoplasm.png", 455 + 5.7 - 100, 55 + 5.7, 567 + 150, 630 + 50);
+        createobj("cytoplasm", "images/cytoplasm.png", 455 + 5.7 - 100, 23 + 5.7, 567 + 150, 630 + 50);
         window.osmosis = function()
         {
             let choice = Math.floor(Math.random() * 2);
@@ -172,25 +172,25 @@
         er1.angle = 90 + 45
         createobj("er2", "images/er.png", 730 + 110 - 7, 187 + 17, 100, 37)
         er2.angle = 13
-        createobj("ribosomes", "images/ribosomes.png", 455 + 5.7 - 100, 55 + 5.7, 567 + 150, 630 + 50);
+        createobj("ribosomes", "images/ribosomes.png", 455 + 5.7 - 100, 23 + 5.7, 567 + 150, 630 + 50);
         cellrep.text = "ERs are the farmers of the country.\nThey produce ribosomes which are food and\nsend them or store them for the cell (country)"
     </game-button>
 
     <game-button name="golgiappbtn" sprite="images/golgiappbtn.png" width="128" height="51" x="1300" y="501">
-        createplayer("golgiapp", "images/golgiapp.png", 670, 590, 100, 100, 0)
+        createplayer("golgiapp", "images/golgiapp.png", 670, 561, 100, 100, 0)
         var golf = 1
         var golfanim = function()
         {
             if (golf == 1)
             {
                 changex(golgiapp, 667)
-                changey(golgiapp, 583)
+                changey(golgiapp, 553)
                 golf = 2
             }
             else if (golf == 2)
             {
                 changex(golgiapp, 670)
-                changey(golgiapp, 590)
+                changey(golgiapp, 561)
                 golf = 1    
             }
             setTimeout(function()
