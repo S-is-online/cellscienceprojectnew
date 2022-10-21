@@ -25,12 +25,21 @@
         fontSize: 23
     });' x="70" y="70"></game-text>
     <game-text name="credits" text="Made by: Saihaan Multani (SMASP123)\n               Hayden Kirkham\n               Yahya Elsaye\n               Moemen Ghanem" x="30" y="570"></game-text>
+    <game-text name="cellrep" text="We will consider cell as a country." x="1270" y="100"></game-text>
+    <game-text name="joke" text="I realized that parts\nof the body are\ncalled organs and\nparts of the cells\nare called organelles." textstyle='const jokestyle = new PIXI.TextStyle({
+        dropShadowColor: "#85a3ff",
+        dropShadowDistance: 1,
+        fontFamily: "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif",
+        fontSize: 13
+    });' x="1300" y="570"></game-text>
     <scene-start>
         credits.angle = -90
+        cellrep.angle = 90
     </scene-start>
     <game-button name="cellmembranebtn" sprite="images/cellmembranebtn.png" width="128" height="51" x="1300" y="37">
         createplayer("cellmembrane", "images/cellmembrane.png", 455 - 100, 55, 567 + 150, 630 + 50, 0)
         cellmembrane.alpha = 0.7
+        cellrep.text = "Cell Membrane is like guards on the border\nwho let authorized personel pass."
     </game-button>
     <game-player name="osmosisrec" sprite="testimg/transparent.png" x="100" y="300" width="110" height="110" speed="0"></game-player>
     <game-button name="cytoplasmbtn" sprite="images/cytoplasmbtn.png" width="128" height="51" x="1300" y="95">
@@ -52,12 +61,15 @@
             }
         }
         setTimeout(osmosis, 10000)
+        cellrep.text = "Cytoplasm is the country's itself."
     </game-button>
     <game-button name="nucleusbtn" sprite="images/nucleusbtn.png" width="128" height="51" x="1300" y="153">
         createobj("nucleus", "images/nucleus.png", 700 + 30, 187, 110, 110)
+        cellrep.text = "Nucleus is the government of\nthe country as it controls the cell"
     </game-button>
     <game-button name="nucleleusbtn" sprite="images/nucleleusbtn.png" width="128" height="51" x="1300" y="211">
         createobj("nucleleus", "images/nucleleus.png", 700 + 30 + 30, 187 + 30, 50, 50)
+        cellrep.text = "It is capital of the country where evrything\nis managed and decided about the country"
     </game-button>
     <game-button name="vacuolesbtn" sprite="images/vacuolesbtn.png" width="128" height="51" x="1300" y="269">
         createobj("vacuole1", "images/vacuole.png", 530, 147, 75, 75)
@@ -88,6 +100,7 @@
         }
 
         setTimeout(vacanim, 300)
+        cellrep.text = "Vacuole are reserves of resources in\nthe country as they store nutrients."
     </game-button>
     <game-button name="mitochrondiabtn" sprite="images/mitochrondiabtn.png" width="128" height="51" x="1300" y="327">
         createobj("mitochrondia1", "images/mitochrondia.png", 570, 223, 110, 51)
@@ -118,9 +131,52 @@
         {
             mitanim()
         }, 300)
+
+        cellrep.text = "Mitochrondia is the electricity and\nwind power plants of country.\nThey provide energy to cell."
     </game-button>
 
-    <game-button name="golgiappbtn" sprite="images/golgiappbtn.png" width="128" height="51" x="1300" y="385">
+    <game-button name="lysosomesbtn" sprite="images/lysosomesbtn.png" width="128" height="51" x="1300" y="385">
+        createobj("lysosomes1", "images/lysosomes.png", 477, 300, 53, 53)
+        createplayer("lysosomesp", "testimg/transparent.png", 477 - 30, 300 - 30, 53, 53, 0)
+        createobj("lysosomes2", "images/lysosomes.png", 883, 167, 53, 53)
+        var mitf = 1
+        var mitanim = function()
+        {
+            if (mitf == 1)
+            {
+                changey(lysosomes1, 303)
+                changex(lysosomes2, 881)
+                mitf = 2
+            }
+            else if (mitf == 2)
+            {
+                changey(lysosomes1, 300)
+                changex(lysosomes2, 883)
+                mitf = 1
+            }
+            setTimeout(function()
+            {
+                mitanim()
+            }, 300)
+        }
+        setTimeout(function()
+        {
+            mitanim()
+        }, 300)
+        
+        cellrep.text = "Lysosomes are garbage collectors of the country.\nThey digest and degrade\nobsolete materials of cells."
+    </game-button>
+
+    <game-button name="erbtn" sprite="images/erbtn.png" width="128" height="51" x="1300" y="443">
+        createobj("er1", "images/er.png", 730 + 27, 187 + 110 - 23, 100, 37)
+        er1.angle = 90 + 45
+        createobj("er2", "images/er.png", 730 + 110 - 7, 187 + 17, 100, 37)
+        er2.angle = 13
+        createobj("ribosomes", "images/ribosomes.png", 455 + 5.7 - 100, 55 + 5.7, 567 + 150, 630 + 50);
+        cellrep.text = "ERs are the farmers of the country.\nThey produce ribosomes which are food and\nsend them or store them for the cell (country)"
+    </game-button>
+
+    <game-button name="golgiappbtn" sprite="images/golgiappbtn.png" width="128" height="51" x="1300" y="501">
         createplayer("golgiapp", "images/golgiapp.png", 670, 590, 100, 100, 0)
         var golf = 1
         var golfanim = function()
@@ -148,48 +204,12 @@
         }, 300)
         window.nutrientsflow = function()
         {
-            createenemy("nutrients", "images/minecraftxp.png", 100, 600, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "osmosisrec", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
+            createenemy("nutrients", "images/minecraftxp.png",730 + 27, 187 + 110 - 23, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "lysosomesp", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
         }
-        createenemy("nutrients", "images/minecraftxp.png", 100, 600, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "osmosisrec", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
+        createenemy("nutrients", "images/minecraftxp.png", 730 + 27, 187 + 110 - 23, 100, 100, "golgiapp", 1, `destroyobj(self, selfticker); createenemy("nutrients", "images/minecraftxp.png", 670, 590, 100, 100, "lysosomesp", 1, 'destroyobj(self, selfticker); nutrientsflow()')`)
+        cellrep.text = "Golgi Apparatus is the trader of the country.\nThey take the products from ER and other\nplaces and send it to its destination"
     </game-button>
 
-
-    <game-button name="lysosomesbtn" sprite="images/lysosomesbtn.png" width="128" height="51" x="1300" y="443">
-        createobj("lysosomes1", "images/lysosomes.png", 477, 300, 53, 53)
-        createobj("lysosomes2", "images/lysosomes.png", 883, 167, 53, 53)
-        var mitf = 1
-        var mitanim = function()
-        {
-            if (mitf == 1)
-            {
-                changey(lysosomes1, 303)
-                changex(lysosomes2, 881)
-                mitf = 2
-            }
-            else if (mitf == 2)
-            {
-                changey(lysosomes1, 300)
-                changex(lysosomes2, 883)
-                mitf = 1
-            }
-            setTimeout(function()
-            {
-                mitanim()
-            }, 300)
-        }
-        setTimeout(function()
-        {
-            mitanim()
-        }, 300)
-    </game-button>
-
-    <game-button name="erbtn" sprite="images/erbtn.png" width="128" height="51" x="1300" y="501">
-        createobj("er1", "images/er.png", 730 + 27, 187 + 110 - 23, 100, 37)
-        er1.angle = 90 + 45
-        createobj("er2", "images/er.png", 730 + 110 - 7, 187 + 17, 100, 37)
-        er2.angle = 13
-        createobj("ribosomes", "images/ribosomes.png", 455 + 5.7 - 100, 55 + 5.7, 567 + 150, 630 + 50);
-    </game-button>
     <game-button name="resetbtn" sprite="images/resetbtn.jpg" width="128" height="51" x="0" y="630">
         changescene("index.html")
     </game-button>
