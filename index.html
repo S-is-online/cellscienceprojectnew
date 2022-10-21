@@ -8,7 +8,7 @@
     <script src="pixi.min.js"></script>
     <script defer src="hge-framework-alpha.js"></script>
 </head> 
-<body>
+<body style="margin: 0px; padding: 0px;">
     <game-win width="1920" height="720" backgroundcolor=" 0xE0FFFE"></game-win>
     <game-object name="sfslogo" sprite="images/sfslogo.png" width="64" height="64"></game-object>
     <game-text name="titletxt" text="Make your own animal cell! 🐑" textstyle='const titletxtstyle = new PIXI.TextStyle({
@@ -29,12 +29,12 @@
         credits.angle = -90
     </scene-start>
     <game-button name="cellmembranebtn" sprite="images/cellmembranebtn.png" width="128" height="51" x="1300" y="37">
-        createplayer("cellmembrane", "testimg/cellmembranet.png", 455, 55, 567, 630, 0)
+        createplayer("cellmembrane", "images/cellmembrane.png", 455 - 100, 55, 567 + 150, 630 + 50, 0)
         cellmembrane.alpha = 0.7
     </game-button>
     <game-player name="osmosisrec" sprite="testimg/transparent.png" x="100" y="300" width="110" height="110" speed="0"></game-player>
     <game-button name="cytoplasmbtn" sprite="images/cytoplasmbtn.png" width="128" height="51" x="1300" y="95">
-        createobj("cytoplasm", "testimg/cytoplasmt.jpg", 470, 70, 537, 600);
+        createobj("cytoplasm", "images/cytoplasm.png", 455 + 5.7 - 100, 55 + 5.7, 567 + 150, 630 + 50);
         window.osmosis = function()
         {
             let choice = Math.floor(Math.random() * 2);
@@ -54,32 +54,32 @@
         setTimeout(osmosis, 10000)
     </game-button>
     <game-button name="nucleusbtn" sprite="images/nucleusbtn.png" width="128" height="51" x="1300" y="153">
-        createobj("nucleus", "testimg/nucluest.jpg", 700 + 30, 187, 110, 110)
+        createobj("nucleus", "images/nucleus.png", 700 + 30, 187, 110, 110)
     </game-button>
     <game-button name="nucleleusbtn" sprite="images/nucleleusbtn.png" width="128" height="51" x="1300" y="211">
-        createobj("nucleleus", "testimg/nucleleust.png", 700 + 30 + 30, 187 + 30, 50, 50)
+        createobj("nucleleus", "images/nucleleus.png", 700 + 30 + 30, 187 + 30, 50, 50)
     </game-button>
     <game-button name="vacuolesbtn" sprite="images/vacuolesbtn.png" width="128" height="51" x="1300" y="269">
-        createobj("vacuole1", "testimg/vacuolet.jpg", 500, 100, 115, 115)
-        createobj("vacuole2", "testimg/vacuolet.jpg", 800, 500, 115, 115)
-        createobj("vacuole3", "testimg/vacuolet.jpg", 570, 400, 115, 115)
+        createobj("vacuole1", "images/vacuole.png", 530, 147, 75, 75)
+        createobj("vacuole2", "images/vacuole.png", 800, 500, 115, 115)
+        createobj("vacuole3", "images/vacuole.png", 551, 400, 170, 170)
         var vacf = 1
         var vacanim = function () 
         {
             if (vacf == 1)
             {
-                changex(vacuole3, 573)
+                changex(vacuole3, 574)
                 vacuole3.angle = 7
-                changey(vacuole1, 93)
+                changey(vacuole1, 140)
                 vacuole1.angle = -1
                 vacuole2.angle = -5
                 vacf = 2
             }
             else if (vacf == 2)
             {
-                changex(vacuole3, 570)
+                changex(vacuole3, 551)
                 vacuole3.angle = 0
-                changey(vacuole1, 100)
+                changey(vacuole1, 147)
                 vacuole1.angle = 0
                 vacuole2.angle = 0
                 vacf = 1
@@ -90,9 +90,9 @@
         setTimeout(vacanim, 300)
     </game-button>
     <game-button name="mitochrondiabtn" sprite="images/mitochrondiabtn.png" width="128" height="51" x="1300" y="327">
-        createobj("mitochrondia1", "testimg/mitochrondiat.png", 570, 223, 110, 51)
+        createobj("mitochrondia1", "images/mitochrondia.png", 570, 223, 110, 51)
         mitochrondia1.angle = 45
-        createobj("mitochrondia2", "testimg/mitochrondiat.png", 937, 323, 110, 51)
+        createobj("mitochrondia2", "images/mitochrondia.png", 937, 323, 110, 51)
         mitochrondia2.angle = 113
         var mitf = 1
         var mitanim = function()
@@ -121,7 +121,7 @@
     </game-button>
 
     <game-button name="golgiappbtn" sprite="images/golgiappbtn.png" width="128" height="51" x="1300" y="385">
-        createplayer("golgiapp", "testimg/golgi.png", 670, 590, 70, 70, 0)
+        createplayer("golgiapp", "images/golgiapp.png", 670, 590, 100, 100, 0)
         var golf = 1
         var golfanim = function()
         {
@@ -155,21 +155,21 @@
 
 
     <game-button name="lysosomesbtn" sprite="images/lysosomesbtn.png" width="128" height="51" x="1300" y="443">
-        createobj("lysosomes1", "testimg/lysosomest.png", 477, 300, 53, 53)
-        createobj("lysosomes2", "testimg/lysosomest.png", 937, 151, 53, 53)
+        createobj("lysosomes1", "images/lysosomes.png", 477, 300, 53, 53)
+        createobj("lysosomes2", "images/lysosomes.png", 883, 167, 53, 53)
         var mitf = 1
         var mitanim = function()
         {
             if (mitf == 1)
             {
                 changey(lysosomes1, 303)
-                changex(lysosomes2, 935)
+                changex(lysosomes2, 881)
                 mitf = 2
             }
             else if (mitf == 2)
             {
                 changey(lysosomes1, 300)
-                changex(lysosomes2, 937)
+                changex(lysosomes2, 883)
                 mitf = 1
             }
             setTimeout(function()
@@ -184,12 +184,11 @@
     </game-button>
 
     <game-button name="erbtn" sprite="images/erbtn.png" width="128" height="51" x="1300" y="501">
-        createobj("er1", "testimg/ert.jpg", 730, 187 + 110, 100, 37)
+        createobj("er1", "images/er.png", 730 + 27, 187 + 110 - 23, 100, 37)
         er1.angle = 90 + 45
-        createobj("er2", "testimg/ert.jpg", 730 + 110, 187, 100, 37)
-        er2.angle = -90 + 45
-        createobj("ribosomes1", "testimg/ribosomest.png", 730 + 17, 187 + 110 + 17, 37, 37)
-        createobj("ribosomes2", "testimg/ribosomest.png", 730 + 110 - 37, 187 - 47, 37, 37)
+        createobj("er2", "images/er.png", 730 + 110 - 7, 187 + 17, 100, 37)
+        er2.angle = 13
+        createobj("ribosomes", "images/ribosomes.png", 455 + 5.7 - 100, 55 + 5.7, 567 + 150, 630 + 50);
     </game-button>
     <game-button name="resetbtn" sprite="images/resetbtn.jpg" width="128" height="51" x="0" y="630">
         changescene("index.html")
